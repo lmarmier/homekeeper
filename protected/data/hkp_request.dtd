@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/homekeeper.dtd
+
+-->
+
+<!ELEMENT hkp_request (info)* >
+<!ATTLIST hkp_request
+    home_id CDATA #IMPLIED
+  >
+
+<!ELEMENT info EMPTY>
+<!ATTLIST info
+    datetime CDATA #IMPLIED
+    comment CDATA #IMPLIED
+    gravity CDATA #IMPLIED
+    value CDATA #IMPLIED
+    type CDATA #IMPLIED
+  >
