@@ -9,12 +9,18 @@
  * @property string $lastName
  * @property string $username
  * @property string $password
+ * @property string $passwordVerif
  *
  * The followings are the available model relations:
  * @property Home[] $homes
  */
 class User extends CActiveRecord
 {
+	/**
+	 * Field passowrd verification
+	 */
+	public $password_repeat;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -33,6 +39,12 @@ class User extends CActiveRecord
 		return 'user';
 	}
 
+	public function beforeSave(){
+		//$this->password = md5($this->password);
+		//$this->password_repeat = md5($this->password_repeat);
+		return true;
+	}
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -41,12 +53,14 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id', 'required', 'message'=>'Le {attribute} ne peux être blanc'),
+			array('username, password_repeat, password', 'required', 'message'=>'Le {attribute} ne peux être blanc', 'on'=>'insert'),
 			array('id', 'numerical', 'integerOnly'=>true),
 			array('firstName, lastName, username, password', 'length', 'max'=>45),
+			array('password', 'compare', 'message'=>'Les mots de passe ne corresponde pas'),
+			array('username', 'unique', 'message'=>'Le nom {value} est déjà utilisé'), 
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, firstName, lastName, username, password', 'safe', 'on'=>'search'),
+			array('firstName, lastName, username', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,6 +87,7 @@ class User extends CActiveRecord
 			'lastName' => 'Nom',
 			'username' => 'Nom d\'utilisateur',
 			'password' => 'Mot de passe',
+			'password_repeat' => 'Vérification du mot de passe',
 		);
 	}
 
