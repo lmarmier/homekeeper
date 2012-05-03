@@ -81,6 +81,9 @@ return array(
 				//*/
 			),
 		),
+		'session'=>array(
+			'timeout'=>600,
+		),
 	),
 
 	// application-level parameters that can be accessed

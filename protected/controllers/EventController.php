@@ -31,7 +31,7 @@ class EventController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','list', 'history'),
+				'actions'=>array('create','update','list','history','check'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -226,6 +226,18 @@ class EventController extends Controller
 	}
 
 	/**
+	 * This function pass a event in the history and redirect on index
+	 */
+	public function actionCheck($id)
+	{
+		$event = Event::model()->findByPk($id);
+		$event->history = 1;
+		if ($event->save()) {
+			$this->redirect(array('index'));
+		}
+	}
+
+	/**
 	 * Create a event with the xml in the post variable
 	 * this action must replace the actionCreate in the future
 	 *
@@ -260,19 +272,22 @@ class EventController extends Controller
 
 		//*/
 
+		//Decode the file input
+		$xml = rawurldecode($xml);
+		$xml = str_replace('+', ' ', $xml);
+		$xml = str_replace('request=', '', $xml);
+
+		//Log the xml received
 		Yii::log($xml);
 
-		//die($xml);
-
-				
-		//Nous créons un document
+		//create a document
 		$document = new DomDocument();
-		//Nous chargons le xml reçu
+		//load the xml reveived
 		$document->loadXML($xml);
-		//Nous sauvons le dernier événement reçu
+		//save the last document received
 		$document->save('test.xml');
 
-		//Validation du fichier XML
+		//validate xml document
 		/*try {
 			$document->Validate();
 		} catch (Exception $e) {

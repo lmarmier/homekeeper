@@ -6,6 +6,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Historique des événements', 'url'=>array('history')),
 	array('label'=>'Afficher les webcams', 'url'=>array('/webcam/index')),
+	array('supprimer cette maison', 'url'=>array('/home/delete')),
 );
 
 ?>
@@ -26,6 +27,7 @@ $this->widget('zii.widgets.CListView', array(
 
 $this->renderPartial('_tableEvent',array(
 	'dataProvider'=>$dataProvider,
+	'emptyText'=>'Aucun événement récent pour cette maison...<br />',
 ));
 
 ?>

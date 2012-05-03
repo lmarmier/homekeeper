@@ -4,6 +4,11 @@
 	'columns'=>array(
 		///*
 		array(
+			'class'=>'CLinkColumn',
+			'imageUrl'=>Yii::app()->baseUrl.'/images/Clock-Small.png',
+			'urlExpression'=>'array(\'check\', \'id\'=>$data->id)',
+		),
+		array(
 			'name'=>'Information',
 			'value'=>'"Un événement de type ".CHtml::encode($data->type)." est survenu le ". $data->datetime',
 		),
