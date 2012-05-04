@@ -938,3 +938,146 @@ Stack trace:
 REQUEST_URI=/homekeeper/index.php/event/check/index
 HTTP_REFERER=http://localhost:8888/homekeeper/index.php/event/
 ---
+2012/05/04 08:10:10 [info] [application] <?xml version="1.0" encoding="utf-8"?>
+<hkp_request home_id="356440045890058"><info type="power" value="failure" gravity="critical" comment="Main power failure (grid 220V)" datetime="2012-05-04T08:10:06Z" /></hkp_request>
+in /Users/lionel/Sites/homekeeper/protected/controllers/EventController.php (281)
+in /Users/lionel/Sites/homekeeper/index.php (13)
+2012/05/04 16:12:40 [error] [exception.CException] exception 'CException' with message 'SiteController and its behaviors do not have a method or closure named "menu".' in /Users/lionel/Sites/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /Users/lionel/Sites/homekeeper/protected/views/site/userLogin.php(4): CComponent->__call('menu', Array)
+#1 /Users/lionel/Sites/homekeeper/protected/views/site/userLogin.php(4): SiteController->menu(Array)
+#2 /Users/lionel/Sites/yii/framework/web/CBaseController.php(127): require('/Users/lionel/S...')
+#3 /Users/lionel/Sites/yii/framework/web/CBaseController.php(96): CBaseController->renderInternal('/Users/lionel/S...', Array, true)
+#4 /Users/lionel/Sites/yii/framework/web/CController.php(870): CBaseController->renderFile('/Users/lionel/S...', Array, true)
+#5 /Users/lionel/Sites/yii/framework/web/CController.php(783): CController->renderPartial('userLogin', Array, true)
+#6 /Users/lionel/Sites/homekeeper/protected/controllers/SiteController.php(129): CController->render('userLogin', Array)
+#7 /Users/lionel/Sites/yii/framework/web/actions/CInlineAction.php(50): SiteController->actionUserLogin()
+#8 /Users/lionel/Sites/yii/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#9 /Users/lionel/Sites/yii/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#10 /Users/lionel/Sites/yii/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(276): CController->run('userLogin')
+#12 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('site/userLogin')
+#13 /Users/lionel/Sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#14 /Users/lionel/Sites/homekeeper/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/homekeeper/index.php/site/userLogin
+HTTP_REFERER=http://localhost:8888/homekeeper/index.php
+---
+2012/05/04 16:12:41 [error] [exception.CException] exception 'CException' with message 'SiteController and its behaviors do not have a method or closure named "menu".' in /Users/lionel/Sites/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /Users/lionel/Sites/homekeeper/protected/views/site/userLogin.php(4): CComponent->__call('menu', Array)
+#1 /Users/lionel/Sites/homekeeper/protected/views/site/userLogin.php(4): SiteController->menu(Array)
+#2 /Users/lionel/Sites/yii/framework/web/CBaseController.php(127): require('/Users/lionel/S...')
+#3 /Users/lionel/Sites/yii/framework/web/CBaseController.php(96): CBaseController->renderInternal('/Users/lionel/S...', Array, true)
+#4 /Users/lionel/Sites/yii/framework/web/CController.php(870): CBaseController->renderFile('/Users/lionel/S...', Array, true)
+#5 /Users/lionel/Sites/yii/framework/web/CController.php(783): CController->renderPartial('userLogin', Array, true)
+#6 /Users/lionel/Sites/homekeeper/protected/controllers/SiteController.php(129): CController->render('userLogin', Array)
+#7 /Users/lionel/Sites/yii/framework/web/actions/CInlineAction.php(50): SiteController->actionUserLogin()
+#8 /Users/lionel/Sites/yii/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#9 /Users/lionel/Sites/yii/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#10 /Users/lionel/Sites/yii/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(276): CController->run('userLogin')
+#12 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('site/userLogin')
+#13 /Users/lionel/Sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#14 /Users/lionel/Sites/homekeeper/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/homekeeper/index.php/site/userLogin
+HTTP_REFERER=http://localhost:8888/homekeeper/index.php
+---
+2012/05/04 16:13:32 [error] [exception.CException] exception 'CException' with message 'SiteController and its behaviors do not have a method or closure named "menu".' in /Users/lionel/Sites/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /Users/lionel/Sites/homekeeper/protected/views/site/userLogin.php(4): CComponent->__call('menu', Array)
+#1 /Users/lionel/Sites/homekeeper/protected/views/site/userLogin.php(4): SiteController->menu(Array)
+#2 /Users/lionel/Sites/yii/framework/web/CBaseController.php(127): require('/Users/lionel/S...')
+#3 /Users/lionel/Sites/yii/framework/web/CBaseController.php(96): CBaseController->renderInternal('/Users/lionel/S...', Array, true)
+#4 /Users/lionel/Sites/yii/framework/web/CController.php(870): CBaseController->renderFile('/Users/lionel/S...', Array, true)
+#5 /Users/lionel/Sites/yii/framework/web/CController.php(783): CController->renderPartial('userLogin', Array, true)
+#6 /Users/lionel/Sites/homekeeper/protected/controllers/SiteController.php(129): CController->render('userLogin', Array)
+#7 /Users/lionel/Sites/yii/framework/web/actions/CInlineAction.php(50): SiteController->actionUserLogin()
+#8 /Users/lionel/Sites/yii/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#9 /Users/lionel/Sites/yii/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#10 /Users/lionel/Sites/yii/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(276): CController->run('userLogin')
+#12 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('site/userLogin')
+#13 /Users/lionel/Sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#14 /Users/lionel/Sites/homekeeper/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/homekeeper/index.php/site/userLogin
+HTTP_REFERER=http://localhost:8888/homekeeper/index.php
+---
+2012/05/04 16:13:32 [error] [exception.CException] exception 'CException' with message 'SiteController and its behaviors do not have a method or closure named "menu".' in /Users/lionel/Sites/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /Users/lionel/Sites/homekeeper/protected/views/site/userLogin.php(4): CComponent->__call('menu', Array)
+#1 /Users/lionel/Sites/homekeeper/protected/views/site/userLogin.php(4): SiteController->menu(Array)
+#2 /Users/lionel/Sites/yii/framework/web/CBaseController.php(127): require('/Users/lionel/S...')
+#3 /Users/lionel/Sites/yii/framework/web/CBaseController.php(96): CBaseController->renderInternal('/Users/lionel/S...', Array, true)
+#4 /Users/lionel/Sites/yii/framework/web/CController.php(870): CBaseController->renderFile('/Users/lionel/S...', Array, true)
+#5 /Users/lionel/Sites/yii/framework/web/CController.php(783): CController->renderPartial('userLogin', Array, true)
+#6 /Users/lionel/Sites/homekeeper/protected/controllers/SiteController.php(129): CController->render('userLogin', Array)
+#7 /Users/lionel/Sites/yii/framework/web/actions/CInlineAction.php(50): SiteController->actionUserLogin()
+#8 /Users/lionel/Sites/yii/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#9 /Users/lionel/Sites/yii/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#10 /Users/lionel/Sites/yii/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(276): CController->run('userLogin')
+#12 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('site/userLogin')
+#13 /Users/lionel/Sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#14 /Users/lionel/Sites/homekeeper/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/homekeeper/index.php/site/userLogin
+HTTP_REFERER=http://localhost:8888/homekeeper/index.php
+---
+2012/05/04 16:30:10 [error] [exception.CException] exception 'CException' with message 'Property "CWebApplication.getController" is not defined.' in /Users/lionel/Sites/yii/framework/base/CComponent.php:131
+Stack trace:
+#0 /Users/lionel/Sites/yii/framework/base/CModule.php(106): CComponent->__get('getController')
+#1 /Users/lionel/Sites/homekeeper/protected/views/homekeeper/main.php(20): CModule->__get('getController')
+#2 /Users/lionel/Sites/yii/framework/web/CBaseController.php(127): require('/Users/lionel/S...')
+#3 /Users/lionel/Sites/yii/framework/web/CBaseController.php(96): CBaseController->renderInternal('/Users/lionel/S...', Array, true)
+#4 /Users/lionel/Sites/yii/framework/web/widgets/CContentDecorator.php(77): CBaseController->renderFile('/Users/lionel/S...', Array, true)
+#5 /Users/lionel/Sites/yii/framework/web/widgets/CContentDecorator.php(55): CContentDecorator->decorate('<div id="conten...')
+#6 /Users/lionel/Sites/yii/framework/web/widgets/COutputProcessor.php(45): CContentDecorator->processOutput('<div id="conten...')
+#7 /Users/lionel/Sites/yii/framework/web/CBaseController.php(207): COutputProcessor->run()
+#8 /Users/lionel/Sites/yii/framework/web/CBaseController.php(301): CBaseController->endWidget('CContentDecorat...')
+#9 /Users/lionel/Sites/homekeeper/protected/views/homekeeper/column1.php(5): CBaseController->endContent()
+#10 /Users/lionel/Sites/yii/framework/web/CBaseController.php(127): require('/Users/lionel/S...')
+#11 /Users/lionel/Sites/yii/framework/web/CBaseController.php(96): CBaseController->renderInternal('/Users/lionel/S...', Array, true)
+#12 /Users/lionel/Sites/yii/framework/web/CController.php(785): CBaseController->renderFile('/Users/lionel/S...', Array, true)
+#13 /Users/lionel/Sites/homekeeper/protected/controllers/SiteController.php(43): CController->render('index', Array)
+#14 /Users/lionel/Sites/yii/framework/web/actions/CInlineAction.php(50): SiteController->actionIndex()
+#15 /Users/lionel/Sites/yii/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#16 /Users/lionel/Sites/yii/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#17 /Users/lionel/Sites/yii/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(276): CController->run('')
+#19 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('')
+#20 /Users/lionel/Sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#21 /Users/lionel/Sites/homekeeper/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/homekeeper/index.php
+HTTP_REFERER=http://localhost:8888/homekeeper/index.php/home
+---
+2012/05/04 16:31:01 [error] [exception.CException] exception 'CException' with message 'Property "SiteController._action" is not defined.' in /Users/lionel/Sites/yii/framework/base/CComponent.php:131
+Stack trace:
+#0 /Users/lionel/Sites/homekeeper/protected/views/homekeeper/main.php(20): CComponent->__get('_action')
+#1 /Users/lionel/Sites/yii/framework/web/CBaseController.php(127): require('/Users/lionel/S...')
+#2 /Users/lionel/Sites/yii/framework/web/CBaseController.php(96): CBaseController->renderInternal('/Users/lionel/S...', Array, true)
+#3 /Users/lionel/Sites/yii/framework/web/widgets/CContentDecorator.php(77): CBaseController->renderFile('/Users/lionel/S...', Array, true)
+#4 /Users/lionel/Sites/yii/framework/web/widgets/CContentDecorator.php(55): CContentDecorator->decorate('<div id="conten...')
+#5 /Users/lionel/Sites/yii/framework/web/widgets/COutputProcessor.php(45): CContentDecorator->processOutput('<div id="conten...')
+#6 /Users/lionel/Sites/yii/framework/web/CBaseController.php(207): COutputProcessor->run()
+#7 /Users/lionel/Sites/yii/framework/web/CBaseController.php(301): CBaseController->endWidget('CContentDecorat...')
+#8 /Users/lionel/Sites/homekeeper/protected/views/homekeeper/column1.php(5): CBaseController->endContent()
+#9 /Users/lionel/Sites/yii/framework/web/CBaseController.php(127): require('/Users/lionel/S...')
+#10 /Users/lionel/Sites/yii/framework/web/CBaseController.php(96): CBaseController->renderInternal('/Users/lionel/S...', Array, true)
+#11 /Users/lionel/Sites/yii/framework/web/CController.php(785): CBaseController->renderFile('/Users/lionel/S...', Array, true)
+#12 /Users/lionel/Sites/homekeeper/protected/controllers/SiteController.php(43): CController->render('index', Array)
+#13 /Users/lionel/Sites/yii/framework/web/actions/CInlineAction.php(50): SiteController->actionIndex()
+#14 /Users/lionel/Sites/yii/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#15 /Users/lionel/Sites/yii/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#16 /Users/lionel/Sites/yii/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(276): CController->run('')
+#18 /Users/lionel/Sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('')
+#19 /Users/lionel/Sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#20 /Users/lionel/Sites/homekeeper/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/homekeeper/index.php
+HTTP_REFERER=http://localhost:8888/homekeeper/index.php/home
+---
