@@ -2,6 +2,8 @@
 
 class SiteController extends Controller
 {
+	public $layout='//homekeeper/column1';
+
 	/**
 	 * Declares class-based actions.
 	 */
@@ -108,6 +110,11 @@ class SiteController extends Controller
 
 	public function actionUserLogin(){
 		$model=new LoginForm;
+
+		//if user is connected, redirect on homePage
+		if (!Yii::app()->user->isGuest) {
+			$this->redirect(array('/home'));
+		}
 
 		//if it's ajax validation request
 		if (isset($_POST['ajax']) && $_POST['ajax']==='login-form') {

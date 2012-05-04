@@ -1,0 +1,4 @@
+/runtime/*
+.DS_Store
+test.xml
+/assets/*

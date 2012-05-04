@@ -1,13 +1,13 @@
 <div class="home">
 	<?php $this->pageTitle=Yii::app()->name; ?>
 
-	<h1>Gestion des utilisateurs</i></h1>
+	<div class="intro">
+		<p>C'est ici que vous allez pourvoir gérer les personnes qui pourront se connecter à votre site.</p>
 
-	<p>C'est ici que vous allez pourvoir gérer les personnes qui pourront se connecter à votre site.</p>
+		<p>Afin de continuer, veuillez vous authentifier avec un login possédant les droits d'administration :</p>
+	</div>
 
-	<p>Afin de continuer, veuillez vous authentifier avec un login possédant les droits d'administration :</p>
-
-	<div class="form" style="width:160px; margin:auto;">
+	<div class="form">
 	<?php $form=$this->beginWidget('CActiveForm', array(
 		'id'=>'login-form',
 		'enableClientValidation'=>true,
@@ -29,10 +29,10 @@
 		</div>
 
 		<div class="row buttons">
-			<?php echo CHtml::submitButton('Login'); ?>
+			<?php echo CHtml::submitButton('Se connecter'); ?>
 		</div>
 
 	<?php $this->endWidget(); ?>
+	<?php echo CHtml::link('>> Retour à l\'accueil', array('/user/admin')) ?>
 	</div><!-- form -->
-	<p><?php echo CHtml::link('Retour à l\'accueil', array('/user/admin')) ?></p>
 </div>

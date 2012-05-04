@@ -1,13 +1,12 @@
 <div class="home">
 	<?php $this->pageTitle=Yii::app()->name; ?>
+	<div class="intro">
+		<p>Cette interface va vous permettre de surveiller vos résidences à distance</p>
 
-	<h1>Bienvenue sur <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+		<p>Afin de continuer, veuillez vous authentifier :</p>
+	</div>
 
-	<p>Cette interface va vous permettre de surveiller vos résidences à distance</p>
-
-	<p>Afin de continuer, veuillez vous authentifier :</p>
-
-	<div class="form" style="width:160px; margin:auto;">
+	<div class="form">
 	<?php $form=$this->beginWidget('CActiveForm', array(
 		'id'=>'login-form',
 		'enableClientValidation'=>true,
@@ -36,10 +35,10 @@
 		</div>
 
 		<div class="row buttons">
-			<?php echo CHtml::submitButton('Login'); ?>
+			<?php echo CHtml::submitButton('Se connecter'); ?>
 		</div>
 
 	<?php $this->endWidget(); ?>
+	<?php echo CHtml::link('>> Gestion des utilisateurs', array('/site/userLogin')) ?>
 	</div><!-- form -->
-	<p><?php echo CHtml::link('Gestion des utilisateurs', array('/site/userLogin')) ?></p>
 </div>
