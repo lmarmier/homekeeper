@@ -15,7 +15,7 @@
 
 	<div id="header">
 		<div id="logo">Bienvenue sur <?php echo CHtml::encode(Yii::app()->name); ?></div>
-		<div class="logout"><?php echo (!Yii::app()->user->isGuest)?CHtml::link('Logout('.Yii::app()->user->name.')', array('/site/logout')):'' ?></div>
+		<div class="logout"><?php echo (!Yii::app()->user->isGuest)?'Bienvenue '. Yii::app()->user->name. ' - '. CHtml::link('Se déconnecter', array('/site/logout')):'' ?></div>
 	</div><!-- header -->
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
@@ -23,7 +23,10 @@
 				array('label'=>'Page d\'authentification', 'visible'=>(Yii::app()->getController()->getAction()->getId() == 'index'), 'itemOptions'=>array('class'=>'auth')),
 				array('label'=>'Gestion des utilisateurs', 'visible'=>(Yii::app()->getController()->getAction()->getId() == 'userLogin'), 'itemOptions'=>array('class'=>'auth')),
 				array('label'=>'Home', 'url'=>array('/'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Résidence', 'url'=>array('/'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Evénements', 'url'=>array('/'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Webcam', 'url'=>array('/'), 'visible'=>!Yii::app()->user->isGuest),
+				//array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 			),
 		)); ?>
 	</div><!-- mainmenu -->

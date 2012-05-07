@@ -6,7 +6,7 @@ class UserController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//homekeeper/column2';
 
 	/**
 	 * @return array action filters
@@ -31,7 +31,7 @@ class UserController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'home'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -42,6 +42,38 @@ class UserController extends Controller
 				'users'=>array('*'),
 			),
 		);
+	}
+
+	/**
+	 * This is homePage of the user.
+	 */
+	public function actionHome()
+	{
+		//Get all events of current user
+		$dataProvider = new CActiveDataProvider('Event',
+			array(
+				'criteria'=>array(
+					'condition'=>'history=0',
+					'with'=>array(
+						'home'=>array(
+							'condition'=>'user_id=1',
+						),
+					),
+					'order'=>'datetime DESC',
+				),
+				'pagination'=>array(
+					'pageSize'=>20,
+				),
+			)
+		);
+
+		//Get all homes of current user
+		$homes = Home::model()->findAllByAttributes(array('user_id'=>1));
+
+		$this->render('home',array(
+			'dataProvider'=>$dataProvider,
+			'homes'=>$homes,
+		));
 	}
 
 	/**

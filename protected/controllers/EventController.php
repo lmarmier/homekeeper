@@ -233,7 +233,7 @@ class EventController extends Controller
 		$event = Event::model()->findByPk($id);
 		$event->history = 1;
 		if ($event->save()) {
-			$this->redirect(array('index'));
+			$this->redirect(array('/');
 		}
 	}
 

@@ -1,4 +1,7 @@
-/runtime/*
+/protected/runtime/*
 .DS_Store
 test.xml
 /assets/*
+protected/runtime/application.log
+
+test.xml
