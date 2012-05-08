@@ -20,12 +20,12 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Page d\'authentification', 'visible'=>(Yii::app()->getController()->getAction()->getId() == 'index'), 'itemOptions'=>array('class'=>'auth')),
-				array('label'=>'Gestion des utilisateurs', 'visible'=>(Yii::app()->getController()->getAction()->getId() == 'userLogin'), 'itemOptions'=>array('class'=>'auth')),
+				array('label'=>'Page d\'authentification', 'visible'=>(Yii::app()->getController()->getAction()->getId() == 'index' && Yii::app()->getController()->getId() == 'site'), 'itemOptions'=>array('class'=>'auth')),
+				array('label'=>'Gestion des utilisateurs', 'visible'=>(Yii::app()->getController()->getAction()->getId() == 'userLogin' && Yii::app()->getController()->getId() == 'site'), 'itemOptions'=>array('class'=>'auth')),
 				array('label'=>'Home', 'url'=>array('/'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Résidence', 'url'=>array('/'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Evénements', 'url'=>array('/'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Webcam', 'url'=>array('/'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Résidence', 'url'=>array('/home'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Evénements', 'url'=>array('/event'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Webcam', 'url'=>array('/webcam'), 'visible'=>!Yii::app()->user->isGuest),
 				//array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 			),
 		)); ?>

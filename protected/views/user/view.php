@@ -11,12 +11,13 @@ $this->menu=array(
 ?>
 
 <h1>Information sur <?php echo $model->firstName. ' '. $model->lastName; ?></h1>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'username',
-		'firstName',
-		'lastName',
-	),
-)); ?>
+<div id="leftBlock">
+	<?php $this->widget('zii.widgets.CDetailView', array(
+		'data'=>$model,
+		'attributes'=>array(
+			'username',
+			'firstName',
+			'lastName',
+		),
+	)); ?>
+</div>

@@ -190,7 +190,7 @@ div#footer{
  * Design to homePage
  */
 
- div#lastEvent{
+ div#leftBlock{
  	float: left;
  	height: 387px;
  	width: 600px;
@@ -207,10 +207,11 @@ div#footer{
 	font-size: 10pt;
  }
 
- div#lastEvent p.title{
+ div#leftBlock h1{
  	margin-top: 0;
  	margin-bottom: 0;
  	font-size: 16pt;
+ 	font-weight:normal;
  }
 
  hr{
@@ -220,7 +221,7 @@ div#footer{
  	margin-top: 5px;
  }
 
- div#lastEvent a{
+ div#leftBlock a{
  	color: inherit;
  }
 
@@ -236,7 +237,7 @@ tr.severe{
 	color:red;
 }
 
-div#lastEvent a.history{
+div#leftBlock a.history{
 	background-image: url('../images/btn_backgroud.png');
 	margin-top: 10px;
 	height:24px;
@@ -248,20 +249,20 @@ div#lastEvent a.history{
 	text-align: center;
 }
 
-div#lastEvent a.history:hover{
+div#leftBlock a.history:hover{
 	text-decoration: underline;
 }
 
-div#lastEvent div.legend{
+div#leftBlock div.legend{
 
 }
 
-div#lastEvent div.legend div.legendItem{
+div#leftBlock div.legend div.legendItem{
 	float: left;
 	margin-right: 50px;
 }
 
-div#lastEvent div.legend span{
+div#leftBlock div.legend span{
 	display: block;
 	float: left;
 	width: 15px;
@@ -269,19 +270,19 @@ div#lastEvent div.legend span{
 	margin-right: 5px;
 }
 
-div#lastEvent div.legend span.green{
+div#leftBlock div.legend span.green{
 	background-color: green;
 }
 
-div#lastEvent div.legend span.orange{
+div#leftBlock div.legend span.orange{
 	background-color: orange;
 }
 
-div#lastEvent div.legend span.red{
+div#leftBlock div.legend span.red{
 	background-color: red;
 }
 
-div#yw1{
+div#sidebar{
 	float: right;
 	height: 387px;
 	width: 280px;
@@ -289,6 +290,7 @@ div#yw1{
 	background-repeat: repeat-x;
 	background-color: #ffebc3;
 	margin: auto;
+	margin-right: 20px;
 	padding: 20px;
 	box-shadow: 4px 4px 8px #aaa;
 	-webkit-box-shadow: 4px 4px 8px #aaa;
@@ -296,33 +298,58 @@ div#yw1{
 	-o-box-shadow: 4px 4px 8px #aaa;
 }
 
-div#yw1 ul{
+div#sidebar ul{
 	margin-left: -40px;
 }
 
-div#yw1 li{
+div#sidebar li{
 	list-style: none;
 	margin-left: 0;
 }
 
-div#yw1 a{
+div#sidebar a{
 	color: black;
 	text-decoration: none;
 }
 
-div#yw1 a:hover{
+div#sidebar a:hover{
 	text-decoration: underline;
 }
 
- div#yw1 div.portlet-title{
+div#sidebar div.portlet-title{
  	margin-top: 0;
  	margin-bottom: 0;
  	font-size: 16pt;
- }
+}
 
- div#yw1 p.introSidebar{
+div#sidebar p.introSidebar{
  	font-size: 10pt;
- }
+}
+
+div#sidebar .createHome{
+	background-image: url('../images/btn_backgroud.png');
+	margin-top: 10px;
+	height:24px;
+	width:100%;
+	border: 0;
+	font-size: 11pt;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+}
+
+div#flash{
+	width:80%;
+	text-align: center;
+	margin: auto;
+	color: white;
+	background: -webkit-linear-gradient(top, #F00, #F77);
+	margin-bottom: 20px;
+}
+
+.itemHome{
+	font-size: 14pt;
+}
 
 div.clear{
 	clear: both;

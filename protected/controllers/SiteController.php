@@ -31,7 +31,7 @@ class SiteController extends Controller
 	{
 		//Si l'utilisateur est déjà connécté, nous le redirigons sur sa page
 		if (!Yii::app()->user->isGuest) {
-			$this->redirect(array('/home'));
+			$this->redirect(array('/user/home'));
 		}
 
 		// renders the view file 'protected/views/site/index.php'

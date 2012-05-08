@@ -1,10 +1,14 @@
 <?php
-$this->breadcrumbs=array(
-	'Events',
-);
+
+$this->titleSidebar = 'Tri';
 
 $this->menu=array(
-	array('label'=>'Retour', 'url'=>array('index')),
+	array('label'=>'- Tous les événements', 'url'=>array('')),
+    array('label'=>'- Critique', 'url'=>array('', 'gravity'=>'critical')),
+    array('label'=>'- Sévère', 'url'=>array('', 'gravity'=>'severe')),
+    array('label'=>'- Haut', 'url'=>array('', 'gravity'=>'high')),
+    array('label'=>'- Moyens', 'url'=>array('', 'gravity'=>'medium')),
+    array('label'=>'- Bas', 'url'=>array('', 'gravity'=>'low')),
 );
 ?>
 
@@ -16,5 +20,5 @@ $this->menu=array(
 $this->renderPartial('_tableEvent',array(
 	'dataProvider'=>$dataProvider,
 ));
-$this->renderPartial('_filter');
+//$this->renderPartial('_filter');
 ?>

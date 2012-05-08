@@ -62,7 +62,7 @@ class UserController extends Controller
 					'order'=>'datetime DESC',
 				),
 				'pagination'=>array(
-					'pageSize'=>20,
+					'pageSize'=>14,
 				),
 			)
 		);

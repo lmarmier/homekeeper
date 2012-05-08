@@ -1,27 +1,48 @@
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'event-grid',
-	'dataProvider'=>$dataProvider,
-	'columns'=>array(
-		///*
-		array(
-			'class'=>'CLinkColumn',
-			'imageUrl'=>Yii::app()->baseUrl.'/images/Clock-Small.png',
-			'urlExpression'=>'array(\'check\', \'id\'=>$data->id)',
-		),
-		array(
-			'name'=>'Information',
-			'value'=>'"Un événement de type ".CHtml::encode($data->type)." est survenu le ". $data->datetime',
-		),
-		array(            // display a column with a link
-            'class'=>'CLinkColumn',
-            'label'=>'Voir l\'événement',
-            'urlExpression'=>'array(\'view\', \'id\'=>$data->id)',
-        ),
-		//*/
-	),
-	'rowCssClassExpression'=>'$data->gravity',
-	'hideHeader'=>'true',
-	'selectableRows'=>'0',
-	'emptyText'=>'Auncun événement...',
-	'htmlOptions'=>array(),
-));
+<div id="leftBlock">
+
+<h1>Derniers événements</h1>
+<hr />
+
+<?php 
+
+//CVarDumper::dump(Yii::app()->user->returnUrl,10,true);
+$this->widget('zii.widgets.grid.CGridView', array(
+			'id'=>'lastEventGrid',
+			'dataProvider'=>$dataProvider,
+			'columns'=>array(
+				array(
+					'name'=>'Informations',
+					'value'=>'$data->home->name. " - Un événement de type ". $data->type. " est survenu le ". date_create($data->datetime)->format("j M Y"). " à ". date_create($data->datetime)->format("h:m:s")',
+				),
+				array(
+					'class'=>'CLinkColumn',
+					'label'=>'Détails',
+					'urlExpression'=>'array("/event/view", "id"=>$data->id)',
+				),
+				array(
+					'value'=>'"/"'
+				),
+				array(
+					'class'=>'CLinkColumn',
+					'label'=>'Archiver',
+					'urlExpression'=>'array("/event/check", "id"=>$data->id)',
+				),
+			),
+			'rowCssClassExpression'=>'$data->gravity',
+			'hideHeader'=>'true',
+			'selectableRows'=>'0',
+			'emptyText'=>'Auncun événement...',
+			'htmlOptions'=>array(),
+			'summaryText'=>'',
+			'cssFile'=>Yii::app()->request->baseUrl. '/css/homekeeper/main.css',
+		)
+	);
+?>
+<?php echo CHtml::link('Retour', array('/home/view', 'id'=>$_SESSION['home_id']), array('class'=>'history')) ?>
+
+<hr/>
+	<div class="legend">
+		<div class="legendItem"><span class="green">&nbsp;</span>Bas ou moyens</div><div class="legendItem"><span class="orange">&nbsp;</span>Haut ou critique</div><div class="legendItem"><span class="red">&nbsp;</span>Sévère</div>
+	</div>
+
+</div>

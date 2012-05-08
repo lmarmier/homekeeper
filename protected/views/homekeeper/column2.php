@@ -16,6 +16,7 @@
 			'items'=>$this->menu,
 			'htmlOptions'=>array('class'=>'operations'),
 		));
+		echo (Yii::app()->getController()->getAction()->getId()==='home')?CHtml::link('Ajouter une résidence', array('/home/create'), array('class'=>'createHome')):'';
 		$this->endWidget();
 
 	?>

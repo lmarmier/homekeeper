@@ -6,7 +6,7 @@ class EventController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//homekeeper/column2';
 
 	/**
 	 * @return array action filters
@@ -145,6 +145,12 @@ class EventController extends Controller
 			$_SESSION['home_id'] = $home_id;
 		}
 
+		//If nothing home is selected we redirect on the homes list
+		if (!isset($_SESSION['home_id'])) {
+			Yii::app()->user->setFlash('noHome', 'Vous devez au préalable séléctionner une résidence afin de consulter ses événements');
+			$this->redirect(array('/home'));
+		}
+
 		$dataProvider=new CActiveDataProvider('Event', array(
 				'criteria' => array(
 						'condition' => 'home_id='.$_SESSION['home_id']. ' AND history!=1 ',
@@ -177,7 +183,12 @@ class EventController extends Controller
 	public function actionHistory($gravity=null)
 	{
 
-		//Création de la condition
+		//If nothing home is selected we redirect on the homes list
+		if (!isset($_SESSION['home_id'])) {
+			$this->redirect(array('/home'));
+		}
+
+		//Create condition
 		$condition = ($gravity)?'AND gravity = "'. $gravity. '"':'';
 
 		$dataProvider=new CActiveDataProvider('Event', array(
@@ -185,6 +196,9 @@ class EventController extends Controller
 						'condition' => 'home_id='.$_SESSION['home_id']. ' AND history=1 '. $condition,
 						'order' => 'datetime DESC',
 					),
+				'pagination'=>array(
+					'pageSize'=>14,
+				),
 			));
 
 		//Récupération du nom de la maisons
@@ -233,7 +247,7 @@ class EventController extends Controller
 		$event = Event::model()->findByPk($id);
 		$event->history = 1;
 		if ($event->save()) {
-			$this->redirect(array('/');
+			$this->redirect(array('/'));
 		}
 	}
 

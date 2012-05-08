@@ -1,7 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Events',
-);
 
 $this->menu=array(
 	array('label'=>'Historique des événements', 'url'=>array('history')),

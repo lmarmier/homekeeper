@@ -10,9 +10,9 @@ foreach ($homes as $v) {
 
 <p>Bienvenue sur l’interface de gestion de vos résidences. Cette page regroupe l’ensemble des informations importantes dont vous pourriez avoir besoins.</p>
 
-<div id="lastEvent">
+<div id="leftBlock">
 
-<p class="title">Derniers événements</p>
+<h1>Derniers événements</h1>
 <hr />
 
 <?php 
@@ -50,12 +50,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		)
 	);
 ?>
-
-<a href="#" class="history">Voir l'historique</a>
+<?php echo CHtml::link('Voir l\'historique', array('/event/history'), array('class'=>'history')) ?>
 
 <hr/>
-<div class="legend">
-	<div class="legendItem"><span class="green">&nbsp;</span>Bas ou moyens</div><div class="legendItem"><span class="orange">&nbsp;</span>Haut ou critique</div><div class="legendItem"><span class="red">&nbsp;</span>Sévère</div>
-</div>
+	<div class="legend">
+		<div class="legendItem"><span class="green">&nbsp;</span>Bas ou moyens</div><div class="legendItem"><span class="orange">&nbsp;</span>Haut ou critique</div><div class="legendItem"><span class="red">&nbsp;</span>Sévère</div>
+	</div>
 
 </div>

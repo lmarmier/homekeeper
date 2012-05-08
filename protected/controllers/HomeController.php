@@ -6,7 +6,7 @@ class HomeController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//homekeeper/column2';
 
 	/**
 	 * @return array action filters
@@ -36,7 +36,7 @@ class HomeController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('admin', 'lion.mar'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -50,8 +50,38 @@ class HomeController extends Controller
 	 */
 	public function actionView($id)
 	{
+
+		if ($id != null) {
+			$_SESSION['home_id'] = $id;
+		}
+
+		//If nothing home is selected we redirect on the homes list
+		if (!isset($_SESSION['home_id'])) {
+			Yii::app()->user->setFlash('noHome', 'Vous devez au préalable séléctionner une résidences afin de consulter sa page');
+			$this->redirect(array('/home'));
+		}
+
+		$dataProvider = new CActiveDataProvider('Event',
+			array(
+				'criteria'=>array(
+					'condition'=>'history=0',
+					'with'=>array(
+						'home'=>array(
+							'condition'=>'home_id='.$id,
+						),
+					),
+					'order'=>'datetime DESC',
+				),
+				'pagination'=>array(
+					'pageSize'=>14,
+				),
+			)
+		);
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'dataProvider'=>$dataProvider,
+			'webcams'=>Webcam::model()->findAllByAttributes(array('home_id'=>$id)),
 		));
 	}
 

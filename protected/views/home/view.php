@@ -1,26 +1,61 @@
 <?php
-$this->breadcrumbs=array(
-	'Homes'=>array('index'),
-	$model->name,
-);
 
-$this->menu=array(
-	array('label'=>'List Home', 'url'=>array('index')),
-	array('label'=>'Create Home', 'url'=>array('create')),
-	array('label'=>'Update Home', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Home', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Home', 'url'=>array('admin')),
-);
+$this->titleSidebar = 'Webcams';
+
+$this->menu=array();
+foreach ($webcams as $v) {
+	$this->menu[] = array('label'=>'- '.$v->title, 'url'=>array('/webcam/view/', 'id'=>$v->id));
+}
+
+
 ?>
 
-<h1>View Home #<?php echo $model->id; ?></h1>
+<h1>Résumé de "<?php echo $model->name; ?>"</h1>
+<div id="leftBlock">
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'name',
-		'description',
-		'user_id',
-	),
-)); ?>
+<h1>Derniers événements pour cette résidence</h1>
+<hr />
+
+<?php 
+
+//CVarDumper::dump(Yii::app()->user->returnUrl,10,true);
+$this->widget('zii.widgets.grid.CGridView', array(
+			'id'=>'lastEventGrid',
+			'dataProvider'=>$dataProvider,
+			'columns'=>array(
+				array(
+					'name'=>'Informations',
+					'value'=>'$data->home->name. " - Un événement de type ". $data->type. " est survenu le ". date_create($data->datetime)->format("j M Y"). " à ". date_create($data->datetime)->format("h:m:s")',
+				),
+				array(
+					'class'=>'CLinkColumn',
+					'label'=>'Détails',
+					'urlExpression'=>'array("/event/view", "id"=>$data->id)',
+				),
+				array(
+					'value'=>'"/"'
+				),
+				array(
+					'class'=>'CLinkColumn',
+					'label'=>'Archiver',
+					'urlExpression'=>'array("/event/check", "id"=>$data->id)',
+				),
+			),
+			'rowCssClassExpression'=>'$data->gravity',
+			'hideHeader'=>'true',
+			'selectableRows'=>'0',
+			'emptyText'=>'Auncun événement récent...',
+			'htmlOptions'=>array(),
+			'summaryText'=>'',
+			'cssFile'=>Yii::app()->request->baseUrl. '/css/homekeeper/main.css',
+		)
+	);
+?>
+<?php echo CHtml::link('Voir l\'historique', array('/event/history'), array('class'=>'history')) ?>
+
+<hr/>
+	<div class="legend">
+		<div class="legendItem"><span class="green">&nbsp;</span>Bas ou moyens</div><div class="legendItem"><span class="orange">&nbsp;</span>Haut ou critique</div><div class="legendItem"><span class="red">&nbsp;</span>Sévère</div>
+	</div>
+
+</div>
