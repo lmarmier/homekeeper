@@ -13,7 +13,7 @@ foreach ($webcams as $v) {
 <h1>Résumé de "<?php echo $model->name; ?>"</h1>
 <div id="leftBlock">
 
-<h1>Derniers événements pour cette résidence</h1>
+<h1>Derniers événements pour cette résidence (<?php echo $dataProvider->getTotalItemCount(); ?> événements)</h1>
 <hr />
 
 <?php 

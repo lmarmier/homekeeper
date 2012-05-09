@@ -156,6 +156,9 @@ class EventController extends Controller
 						'condition' => 'home_id='.$_SESSION['home_id']. ' AND history!=1 ',
 						'order' => 'datetime DESC',
 					),
+				'pagination'=>array(
+						'pageSize'=>14,
+					),
 			));
 
 		//Récupération du nom de la maisons

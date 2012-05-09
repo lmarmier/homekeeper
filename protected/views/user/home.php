@@ -12,7 +12,7 @@ foreach ($homes as $v) {
 
 <div id="leftBlock">
 
-<h1>Derniers événements</h1>
+<h1>Derniers événements (<?php echo $dataProvider->getTotalItemCount(); ?> événements)</h1>
 <hr />
 
 <?php 

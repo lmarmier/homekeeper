@@ -1,6 +1,5 @@
 <?php
 $this->titleSidebar = "Opérations";
-$this->contentSidebar = 'test';
 $this->menu=array(
 	array('label'=>'- Ajouter une résidences', 'url'=>array('create')),
 );

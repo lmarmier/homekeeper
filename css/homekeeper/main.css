@@ -351,6 +351,11 @@ div#flash{
 	font-size: 14pt;
 }
 
+.minWebcam{
+	float: left;
+	margin-right: 20px;
+}
+
 div.clear{
 	clear: both;
 }
