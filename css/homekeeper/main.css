@@ -356,6 +356,32 @@ div#flash{
 	margin-right: 20px;
 }
 
+div.install{
+	padding: 20px;
+}
+
+div.install a{
+	background-image: url('../images/btn_backgroud.png');
+	background-repeat: repeat-x;
+	padding: 4px;
+	height: 16px;
+	width: 150px;
+	margin: auto;
+	margin-top: 10px;
+	border: 0;
+	font-size: 11pt;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	color: black;
+}
+
+div.install a:hover{
+	text-decoration: underline;
+}
+
+
+
 div.clear{
 	clear: both;
 }

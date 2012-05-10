@@ -1,4 +1,7 @@
 <?php
+if (file_exists('install/index.php')) {
+	header('Location: install/');
+}
 
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/../yii/framework/yii.php';
