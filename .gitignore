@@ -3,5 +3,5 @@
 test.xml
 /assets/*
 protected/runtime/application.log
-
+/images/home/*
 test.xml

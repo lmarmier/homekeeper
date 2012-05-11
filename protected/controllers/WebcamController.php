@@ -132,6 +132,12 @@ class WebcamController extends Controller
 			$_SESSION['home_id'] = $home_id;
 		}
 
+		//If nothing home is selected we redirect on the homes list
+		if (!isset($_SESSION['home_id'])) {
+			Yii::app()->user->setFlash('noHome', 'Vous devez au préalable séléctionner une résidence afin de consulter ses webcams');
+			$this->redirect(array('/home'));
+		}
+
 		$dataProvider=new CActiveDataProvider('Webcam',
 			array('criteria' => array(
 						'condition' => 'home_id='.$_SESSION['home_id'],

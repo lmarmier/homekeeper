@@ -12,9 +12,13 @@
  * The followings are the available model relations:
  * @property Event[] $events
  * @property User $user
+ * @property CUploadedFile $image
  */
 class Home extends CActiveRecord
 {
+	//Store the image of this home
+	public $image;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -44,6 +48,7 @@ class Home extends CActiveRecord
 			array('id, user_id, name', 'required'),
 			array('id, user_id', 'numerical', 'integerOnly'=>true),
 			array('name, description', 'length', 'max'=>45),
+			array('image', 'file', 'types'=>'jpg'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, name, description, user_id', 'safe', 'on'=>'search'),

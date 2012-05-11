@@ -40,6 +40,10 @@
 
 	<div class="clear"></div>
 
+	<div id="home">
+		Maison séléctionnée : <?php echo (isset($_SESSION['home_id']))?Home::model()->findByAttributes(array('id'=>$_SESSION['home_id']))->name :'Aucune...'; ?>
+	</div>
+
 	<div id="footer">
 		Copyright &copy; <?php echo date('Y'); ?> by Lionel Marmier.<br/>
 		All Rights Reserved.<br/>

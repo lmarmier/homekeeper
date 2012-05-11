@@ -9,14 +9,15 @@ foreach ($webcams as $v) {
 
 
 ?>
-
+<div id="imgHome">
+	<?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/home/'. $_SESSION['home_id']. '.jpeg', 'home', array('width'=>80, 'class'=>'minWebcam')) ?>
+</div>
 <h1>Résumé de "<?php echo $model->name; ?>"</h1>
 <div id="leftBlock">
-
 <h1>Derniers événements pour cette résidence (<?php echo $dataProvider->getTotalItemCount(); ?> événements)</h1>
 <hr />
 
-<?php 
+<?php
 
 //CVarDumper::dump(Yii::app()->user->returnUrl,10,true);
 $this->widget('zii.widgets.grid.CGridView', array(

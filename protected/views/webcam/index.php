@@ -1,23 +1,21 @@
 <?php
 $this->titleSidebar = 'Opérations';
 $this->menu=array(
-	array('label'=>'Create Webcam', 'url'=>array('create')),
-	array('label'=>'Manage Webcam', 'url'=>array('admin')),
+	array('label'=>'Ajouter une Webcam', 'url'=>array('create')),
 );
 ?>
-
-<?php $data = $dataProvider->getData(); ?>
 
 <h1>Webcams</h1>
 
 <div id="leftBlock">
 
-	<h1>Liste des webcams pour "<?php echo $data[0]->home->name ?>"</h1>
+	<h1>Liste des webcams pour "<?php echo Home::model()->findByAttributes(array('id'=>$_SESSION['home_id']))->name ?>"</h1>
 	<hr/>
 
 	<?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 	'summaryText'=>'',
+	'emptyText'=>'Aucune webcam pour cette maison...<br />',
 	)); ?>
 </div>

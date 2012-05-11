@@ -3,6 +3,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'home-form',
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
 	<p class="note">Les champs avec <span class="required">*</span> sont obligatoire</p>
@@ -25,6 +26,12 @@
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('size'=>255,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'description'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'image'); ?>
+		<?php echo $form->fileField($model,'image'); ?>
+		<?php echo $form->error($model,'image'); ?>
 	</div>
 
 		<?php echo $form->hiddenField($model,'user_id',array('value'=>$id)); ?>

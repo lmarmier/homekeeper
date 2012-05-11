@@ -84,15 +84,17 @@ div#mainmenu a:hover{
 div#mainmenu ul li.auth{
 	float: left;
 	list-style:none;
-	margin-top: 10px;
 	width:350px;
 	font-size: 16pt;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #FFFFFF;
+	margin-left: 250px;
+	text-align:center;
 }
 
-div#mainmenu ul li.auth{
-	margin-left: 350px;
+div#mainmenu ul li.auth:hover{
+	background-image: none;
+	color: none;
 }
 
 div#content{
@@ -380,7 +382,12 @@ div.install a:hover{
 	text-decoration: underline;
 }
 
-
+div#home{
+	margin-right: 20px;
+	margin-top: 10px;
+	font-size: 10pt;
+	float: right;
+}
 
 div.clear{
 	clear: both;

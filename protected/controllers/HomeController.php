@@ -99,8 +99,11 @@ class HomeController extends Controller
 		if(isset($_POST['Home']))
 		{
 			$model->attributes=$_POST['Home'];
-			if($model->save())
+			$model->image=CUploadedFile::getInstance($model, 'image');
+			if($model->save()){
+				$model->image->saveAs('images/home/'. $model->id. '.'. $model->image->getExtensionName());
 				$this->redirect(array('index'));
+			}
 		}
 
 		//Récupérons l'id de l'utilisateur connecté
