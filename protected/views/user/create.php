@@ -11,4 +11,6 @@ $this->menu=array(
 
 <h1>Ajouter un utilisateur</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<div id="leftBlock">
+	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+</div>

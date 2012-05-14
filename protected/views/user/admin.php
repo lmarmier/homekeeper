@@ -1,7 +1,6 @@
 <?php
-$this->breadcrumbs=array(
-	'Gestion des utilisateurs',
-);
+
+$this->titleSidebar = "Opérations";
 
 $this->menu=array(
 	array('label'=>'Ajouter un utilisateurs', 'url'=>array('create')),
@@ -10,7 +9,7 @@ $this->menu=array(
 
 <h1>Gestion des utilisateurs</h1>
 
-
+<div id="leftBlock">
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-grid',
 	'dataProvider'=>$model->search(),
@@ -30,3 +29,6 @@ $this->menu=array(
 		),
 	),
 )); ?>
+
+	
+</div>

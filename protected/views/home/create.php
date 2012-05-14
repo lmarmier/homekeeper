@@ -1,8 +1,6 @@
 <?php
-$this->breadcrumbs=array(
-	'Homes'=>array('index'),
-	'Ajouter une résidence',
-);
+
+$this->titleSidebar = "Opérations";
 
 $this->menu=array(
 	array('label'=>'Retour', 'url'=>array('index')),
@@ -11,4 +9,6 @@ $this->menu=array(
 
 <h1>Ajout d'une résidence</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model, 'id'=>$id)); ?>
+<div id="leftBlock">
+	<?php echo $this->renderPartial('_form', array('model'=>$model, 'id'=>$id)); ?>
+</div>

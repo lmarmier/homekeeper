@@ -45,10 +45,11 @@ class Home extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, user_id, name', 'required'),
-			array('id, user_id', 'numerical', 'integerOnly'=>true),
-			array('name, description', 'length', 'max'=>45),
-			array('image', 'file', 'types'=>'jpg'),
+			array('id, user_id, name', 'required', 'message'=>'Le {attribute} ne peux être blanc'),
+			array('id, user_id', 'numerical', 'integerOnly'=>true, 'message'=>'L\' {attribute} doit être un nombre entier'),
+			array('name', 'length', 'max'=>45, 'message'=>'Le {attribute} doit être au maximum de 45 caractères'),
+			array('image', 'file', 'types'=>'jpg', 'message'=>'L\' {attribute} doit être un JPG'),
+			array('id', 'unique', 'message'=>'L\'id {value} est déjà utilisé'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, name, description, user_id', 'safe', 'on'=>'search'),
@@ -78,6 +79,7 @@ class Home extends CActiveRecord
 			'name' => 'Nom',
 			'description' => 'Description',
 			'user_id' => 'User',
+			'image' => 'Image (jpg)',
 		);
 	}
 
