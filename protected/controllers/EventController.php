@@ -273,7 +273,7 @@ class EventController extends Controller
 		}
 
 	 	/*
-	 	 * Synthaxe du fichier XML devant être envoyé
+	 	 * XML Sytanx has send
 	 	 *
 	 	$xml = "<?xml version='1.0' encoding='utf-8'?>
 	 			<!DOCTYPE hkp_request SYSTEM 'protected/data/hkp_request.dtd'>
@@ -300,24 +300,15 @@ class EventController extends Controller
 		//create a document
 		$document = new DomDocument();
 		//load the xml reveived
-		$document->loadXML($xml);
+		try {
+			$document->loadXML($xml);
+		} catch (Exception $e) {
+			$this->render('return', array(
+					'code'=>100, //Code 101 : XML file is not valid
+			));
+		}
 		//save the last document received
 		$document->save('test.xml');
-
-		//validate xml document
-		/*try {
-			$document->Validate();
-		} catch (Exception $e) {
-			echo $e;
-		}
-		//*/
-		/*
-		if ($document->Validate() == true) {
-			throw new CHttpException(400, Yii::t('err', 'bad request'));
-		}else{
-			throw new CHttpException(400, Yii::t('err', 'bad request'));
-		}
-		//*/
 
 		//Chargement du modèle
 		$model = new Event;
@@ -337,14 +328,21 @@ class EventController extends Controller
 		//Changement du layout pour retourner du xml
 		$this->layout = "xml";
 
-		if ($model->save()) {
+		if ($model->validate()) {
+				if ($model->save()) {
+				$this->render('return', array(
+					'code'=>0, //Code 0 : Event is save corectly
+				));
+			}else{
+				$this->render('return', array(
+					'code'=>200, //Code 200 : Error when save event
+				));
+			}
+		}
+		else{
 			$this->render('return', array(
-				'code'=>0,
-			));
-		}else{
-			$this->render('return', array(
-				'code'=>200,
-			));
+					'code'=>201, //Code 201 : Attributes not valid
+				));
 		}
 
 	 }

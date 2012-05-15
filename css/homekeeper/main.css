@@ -123,7 +123,7 @@ div#footer{
 }
 
 /*
- * Design to homePage
+ * Design to page
  */
 
  div#leftBlock{
@@ -140,7 +140,7 @@ div#footer{
 	-webkit-box-shadow: 4px 4px 8px #aaa;
 	-moz-box-shadow: 4px 4px 8px #aaa;
 	-o-box-shadow: 4px 4px 8px #aaa;
-	font-size: 10pt;
+	font-size: 9pt;
  }
 
  div#leftBlock h1{
