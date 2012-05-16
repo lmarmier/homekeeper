@@ -14,18 +14,17 @@ $this->menu=array(
 	'id'=>'user-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'summaryText'=>'Utilisateurs {start} - {end} sur un total de {count}',
+	//'itemsCssClass'=>Yii::app()->request->baseUrl. '/css/homekeeper/screen.css',
 	'columns'=>array(
-		'username',
 		'firstName',
 		'lastName',
-		array(
-			'class'=>'CDataColumn',
-			'name'=>'homes.id',
-			'value'=>'$row',
-		),
+		'username',
 		array(
 			'class'=>'CButtonColumn',
 			'deleteConfirmation'=>'Êtes-vous sûr de vouloir supprimer cet utilisateur ?',
+			'updateButtonLabel'=>false,
+			'updateButtonImageUrl'=>false,
 		),
 	),
 )); ?>

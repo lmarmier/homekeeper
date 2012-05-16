@@ -10,7 +10,7 @@
 
 .grid-view table.items
 {
-	background: white;
+	background: #fde9c3;
 	border-collapse: collapse;
 	width: 100%;
 	border: 1px #D0E3EF solid;
@@ -19,7 +19,7 @@
 .grid-view table.items th, .grid-view table.items td
 {
 	font-size: 0.9em;
-	border: 1px white solid;
+	border: 1px #fde9c3 solid;
 	padding: 0.3em;
 }
 
@@ -56,12 +56,12 @@
 
 .grid-view table.items tr.even
 {
-	background: #F8F8F8;
+	background: #FFC95C;
 }
 
 .grid-view table.items tr.odd
 {
-	background: #E5F1F4;
+	background: #FF984F;
 }
 
 .grid-view table.items tr.selected

@@ -49,6 +49,9 @@ class UserController extends Controller
 	 */
 	public function actionHome()
 	{
+		//Get ID of current user
+		$id = User::model()->findByAttributes(array('username'=>Yii::app()->user->id))->id;
+
 		//Get all events of current user
 		$dataProvider = new CActiveDataProvider('Event',
 			array(
@@ -56,7 +59,7 @@ class UserController extends Controller
 					'condition'=>'history=0',
 					'with'=>array(
 						'home'=>array(
-							'condition'=>'user_id=1',
+							'condition'=>'user_id='.$id,
 						),
 					),
 					'order'=>'datetime DESC',
@@ -68,7 +71,7 @@ class UserController extends Controller
 		);
 
 		//Get all homes of current user
-		$homes = Home::model()->findAllByAttributes(array('user_id'=>1));
+		$homes = Home::model()->findAllByAttributes(array('user_id'=>$id));
 
 		$this->render('home',array(
 			'dataProvider'=>$dataProvider,
@@ -102,7 +105,7 @@ class UserController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('create',array(

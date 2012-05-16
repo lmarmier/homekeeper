@@ -10,7 +10,7 @@ foreach ($webcams as $v) {
 
 ?>
 <div id="imgHome">
-	<?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/home/'. $_SESSION['home_id']. '.jpeg', 'home', array('width'=>80, 'class'=>'minWebcam')) ?>
+	<?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/home/'. $_SESSION['home_id']. '.jpg', 'home', array('height'=>50, 'class'=>'minWebcam')) ?>
 </div>
 <h1>Résumé de "<?php echo $model->name; ?>"</h1>
 <div id="leftBlock">
@@ -56,7 +56,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
 <hr/>
 	<div class="legend">
-		<div class="legendItem"><span class="green">&nbsp;</span>Bas ou moyens</div><div class="legendItem"><span class="orange">&nbsp;</span>Haut ou critique</div><div class="legendItem"><span class="red">&nbsp;</span>Sévère</div>
+		<div class="legendItem"><span class="green">&nbsp;</span>Bas ou moyens</div><div class="legendItem"><span class="orange">&nbsp;</span>Haut</div><div class="legendItem"><span class="red">&nbsp;</span>Sévère ou critique</div>
 	</div>
 
 </div>

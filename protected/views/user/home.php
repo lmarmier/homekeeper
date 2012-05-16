@@ -54,7 +54,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
 <hr/>
 	<div class="legend">
-		<div class="legendItem"><span class="green">&nbsp;</span>Bas ou moyens</div><div class="legendItem"><span class="orange">&nbsp;</span>Haut ou critique</div><div class="legendItem"><span class="red">&nbsp;</span>Sévère</div>
+		<div class="legendItem"><span class="green">&nbsp;</span>Bas ou moyens</div><div class="legendItem"><span class="orange">&nbsp;</span>Haut</div><div class="legendItem"><span class="red">&nbsp;</span>Sévère ou critique</div>
 	</div>
 
 </div>

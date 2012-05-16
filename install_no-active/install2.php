@@ -50,9 +50,15 @@
                             $error_mg[] = "Impossible de trouver le fichier ".$sql_dump."! Merci de vérifier si ce fichier existe.";                            
                             @unlink($config_file_path);
                         }else{
-                            // additional operations, like setting up admin passwords etc.
-							// ...
-                            $completed = true;                            
+                            if ($_POST['admin_password'] === $_POST['admin_password_repeat']) {
+                              $password = $_POST['admin_password'];
+                              mysql_query('INSERT INTO  `test_install`.`user` (`id` ,`firstName` ,`lastName` ,`username` ,`password`)
+                                           VALUES (NULL ,  "'. $_POST['admin_firstname']. '",  "'. $_POST['admin_lastname']. '",  "admin",  "'. md5($password). '");');
+                              $completed = true;
+                            }else{
+                              $completed = false;  
+                              $error_mg[] = "Les mots de passe de l'administrateur ne corresponde pas";   
+                            }                         
                         }
 					} else {
 						$error_mg[] = "Erreur de connexion à la base de donnée. Vérifier si la base de données existe</span><br/>";
@@ -96,7 +102,9 @@
 			else:
 		?>
 		<p>
-			L'installation de votre base de données s'est déroulée avec succès. Par mesure de sécurité, veuillez supprimer le dossier d'installation.
+			L'installation de votre base de données s'est déroulée avec succès. Par mesure de sécurité, veuillez supprimer le dossier d'installation.<br />
+      Une fois ceci fais, vous pouvez accéder à l'application et vous connecter grâce au nom d'utilisateur admin et au mots de passe que vous venez de définir.<br />
+      Vous pouvez également créer de nouvel utilisateurs qui grâce à l'interface de gestion des utilisateurs.
 			<a href="..">Accéder à l'application</a>
 		</p>
 	<?php endif; ?>

@@ -40,7 +40,7 @@ class User extends CActiveRecord
 	}
 
 	public function beforeSave(){
-		//$this->password = md5($this->password);
+		$this->password = md5($this->password);
 		//$this->password_repeat = md5($this->password_repeat);
 		return true;
 	}

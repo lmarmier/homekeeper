@@ -113,7 +113,7 @@ class SiteController extends Controller
 
 		//if user is connected, redirect on homePage
 		if (!Yii::app()->user->isGuest) {
-			$this->redirect(array('/home'));
+			$this->redirect(array('/user'));
 		}
 
 		//if it's ajax validation request
@@ -126,8 +126,10 @@ class SiteController extends Controller
 		if (isset($_POST['LoginForm'])) {
 			$model->attributes=$_POST['LoginForm'];
 			//Validate user input and redirect on the users management page
-			if ($model->validate() && $model->login())
+			if ($model->validate() && $model->login()){
+				$_SESSION['admin'] = true;
 				$this->redirect(array('/user/admin'));
+			}
 		}
 
 		//Display the login form

@@ -165,11 +165,11 @@ tr.low, tr.medium{
 	color:green;
 }
 
-tr.high, tr.critical{
+tr.high{
 	color:orange;
 }
 
-tr.severe{
+tr.severe, tr.critical{
 	color:red;
 }
 
