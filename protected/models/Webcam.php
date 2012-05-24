@@ -7,6 +7,8 @@
  * @property integer $id
  * @property string $title
  * @property string $location
+ * @property string $ip
+ * @proprety string $brand
  * @property integer $home_id
  *
  * The followings are the available model relations:
@@ -42,10 +44,10 @@ class Webcam extends CActiveRecord
 		return array(
 			array('home_id', 'required'),
 			array('home_id', 'numerical', 'integerOnly'=>true),
-			array('title, location', 'length', 'max'=>45),
+			array('title, location, ip, brand', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, location, home_id', 'safe', 'on'=>'search'),
+			array('id, title, location, ip, home_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,9 +70,11 @@ class Webcam extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'location' => 'Location',
-			'home_id' => 'Home',
+			'title' => 'Titre',
+			'location' => 'Emplacement',
+			'ip'=>'Adresse IP',
+			'brand'=>'Marque de la webcam',
+			'home_id' => 'Id de la maison',
 		);
 	}
 

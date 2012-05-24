@@ -262,7 +262,11 @@ class EventController extends Controller
 	 */
 	 public function actionCreateWithXML($xml=null)
 	 {
-	 	// Récupération du XML de la réponse
+	 	
+	 	//Change layout to xml
+		$this->layout = "xml";
+
+	 	// Get the xml response
 		// read from stdin instead as reading from a formular field,
 		// thus, the POSTed request remains a valid XML document ! (MJN June 2011)
 		// see also http://snipplr.com/view/755/read-raw-post-data-useful-for-grabbing-xml-from-flash-xmlsocket/
@@ -273,7 +277,7 @@ class EventController extends Controller
 		}
 
 	 	/*
-	 	 * XML Sytanx has send
+	 	 * XML Syntax has send
 	 	 *
 	 	$xml = "<?xml version='1.0' encoding='utf-8'?>
 	 			<!DOCTYPE hkp_request SYSTEM 'protected/data/hkp_request.dtd'>
@@ -289,7 +293,7 @@ class EventController extends Controller
 
 		//*/
 
-		//Decode the file input
+		//Decode the input file
 		$xml = rawurldecode($xml);
 		$xml = str_replace('+', ' ', $xml);
 		$xml = str_replace('request=', '', $xml);
@@ -299,24 +303,25 @@ class EventController extends Controller
 
 		//create a document
 		$document = new DomDocument();
-		//load the xml reveived
+		
+		//load the xml received
 		try {
 			$document->loadXML($xml);
 		} catch (Exception $e) {
 			$this->render('return', array(
-					'code'=>100, //Code 101 : XML file is not valid
+					'code'=>100, //Code 100 : XML file is not load
 			));
 		}
 		//save the last document received
 		$document->save('test.xml');
 
-		//Chargement du modèle
+		//Load the model
 		$model = new Event;
 
-		//Récupération du home_id
+		//Get home_id
 		$model->home_id = $document->getElementsByTagName('hkp_request')->item(0)->getAttribute('home_id');
 
-		//Récupération du corp du fichier de l'intervention
+		//Get body of intervention file
 		$info = $document->getElementsByTagName('info')->item(0);
 		$model->type = $info->getAttribute('type');
 		$model->value = $info->getAttribute('value');
@@ -325,13 +330,11 @@ class EventController extends Controller
 		$model->datetime = $info->getAttribute('datetime');
 		$model->history = 0;
 
-		//Changement du layout pour retourner du xml
-		$this->layout = "xml";
-
+		//Validate data received
 		if ($model->validate()) {
 				if ($model->save()) {
 				$this->render('return', array(
-					'code'=>0, //Code 0 : Event is save corectly
+					'code'=>0, //Code 0 : Event is saved correctly
 				));
 			}else{
 				$this->render('return', array(

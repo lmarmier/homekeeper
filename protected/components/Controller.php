@@ -28,4 +28,20 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+	
+	/**
+	 *
+	 *
+	 */
+	 public function beforeAction(){
+		if(isset($_SESSION['home_id'])){
+			$homeUserId = Home::model()->findByPk($_SESSION['home_id'])->user_id;
+			$id = User::model()->findByAttributes(array('username'=>Yii::app()->user->id))->id;
+
+			if($homeUserId !== $id){
+				throw new CHttpException('400', 'Vous n\'avez pas les droit d\'accès à cette page.');
+			}
+		}
+		return true;
+	 }
 }

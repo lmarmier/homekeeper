@@ -4,3 +4,4 @@ test.xml
 protected/runtime/application.log
 /images/home/*
 test.xml
+.DS_Store

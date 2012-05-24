@@ -5,8 +5,6 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
@@ -20,15 +18,23 @@
 		<?php echo $form->textField($model,'location',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'location'); ?>
 	</div>
-
+	
 	<div class="row">
-		<?php echo $form->labelEx($model,'home_id'); ?>
-		<?php echo $form->textField($model,'home_id'); ?>
-		<?php echo $form->error($model,'home_id'); ?>
+		<?php echo $form->labelEx($model,'ip'); ?>
+		<?php echo $form->textField($model,'ip',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'ip'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'brand'); ?>
+		<?php echo $form->dropDownList($model,'brand', array('axis'=>'axis','trendnet'=>'trendnet')); ?>
+		<?php echo $form->error($model, 'brand'); ?>
 	</div>
 
+	<?php echo $form->hiddenField($model,'home_id', array('value'=>$_SESSION['home_id'])); ?>
+
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Enregistrer' : 'Modifier'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
