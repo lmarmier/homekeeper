@@ -1,5 +1,10 @@
 <?php
 
+$this->breadcrumbs=array(
+	Home::model()->findByAttributes(array('id'=>$_SESSION['home_id']))->name => array('/home/view', 'id'=>$_SESSION['home_id']),
+	'Historique',
+);
+
 $this->titleSidebar = 'Tri';
 
 $this->menu=array(

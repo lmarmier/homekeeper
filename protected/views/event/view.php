@@ -1,10 +1,16 @@
 <?php
+$date = new CDateFormatter('fr');
+
+$this->breadcrumbs=array(
+	Home::model()->findByAttributes(array('id'=>$_SESSION['home_id']))->name => array('/home/view', 'id'=>$_SESSION['home_id']),
+	'Evenement'=>array('/event'),
+	'Evenement du '.$date->formatDateTime($model->datetime, 'short', null). ' à '.  $date->formatDateTime($model->datetime, null, 'short'),
+);
+
 $this->titleSidebar = 'Opérations';
 $this->menu=array(
 	array('label'=>'Historique des événements', 'url'=>array('history', 'home_id'=>$model->home_id)),
 );
-
-$date = new CDateFormatter('fr');
 
 ?>
 

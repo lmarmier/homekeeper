@@ -1,49 +1,74 @@
+<?php 
+$this->breadcrumbs=array(
+	Home::model()->findByAttributes(array('id'=>$_SESSION['home_id']))->name => array('/home/view', 'id'=>$_SESSION['home_id']),
+	'Webcam'=>array('index'),
+	Webcam::model()->findByAttributes(array('id' => $id))->title => array('/webcam/view', 'id'=>$id),
+	'images fixes',
+);
+?>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<?php echo CHtml::scriptFile(Yii::app()->request->baseUrl. '/js/zoombox/zoombox.js'); ?>
+
+<script type="text/javascript">
+	$(function($){
+		//alert('test');
+		$('a.zoombox').zoombox();
+	});	
+</script>
+
 <?php
 
 $this->titleSidebar = 'Opérations';
 
 $this->menu=array(
-	array('label'=>'Liste des Webcams', 'url'=>array('index')),
-	array('label'=>'Images fixes', 'url'=>array('img')),
+	array('label'=>'Retour', 'url'=>array('view', 'id'=>$id)),
 );
 
 $date = new CDateFormatter('fr');
-
-$dir = 'http://localhost:8888'. Yii::app()->request->baseUrl.'/images/home/';
 
 ?>
 
 <h1>Dernière images pour cette webcam</h1>
 
+<p>
+	Ci-dessous, les 12 dernières images prise par votre caméra. Ces images ont été prise lors d'événement déclancher par la caméra.
+</p>
+
 <div id="leftBlock">
+
+<?php
+$i = -2;
+if(is_dir('images/webcams/'.$id)){
+	$dir = opendir('images/webcams/'.$id);
+?>
 
 <table style="border-width: 1px; border-style: dashed; width: 100%;">
             <tr>
                 <?php
-                $i = -2;
-                //$dir = opendir(Yii::app()->request->baseUrl.'/images/webcams/');
-                echo $dir. '<br />';
-                var_dump(is_dir($dir));
 
-                /*
-                if (is_dir($dir)) {
-	                while ($file = @readdir($dir)) {
-	                    $i++;
-	                    if ($file != '.' && $file != '..') {
-	                        //Récupération de l'extension du fichier
-	                        $extension=substr(strrchr($file,'.'),1);
-	                        //echo '<td align="center"><img src="./img/' . $file . '" alt="'. $file .'" width="100px" height="150px"/><br />';
-	                        echo '<td align="center"><img src="img.php?img=' . $file . '&ext='. $extension. '" alt="'. $file .'" width="100px" height="150px"/><br />';
-	                        echo $file. '</td>';
-	                    }
-	                    if ($i % 6 == 0 && $i != 0) {
-	                        echo '</tr><tr>';
-	                    }
-	                }
-                }
+                //*
+	            while (($file = @readdir($dir)) && $i <= 12) {
+			        $i++;
+			        if ($file != '.' && $file != '..') {
+			        	echo '<td align="center">'. CHtml::link(CHtml::image(Yii::app()->baseUrl.'/images/webcams/'.$id.'/'.$file, 'webcam_img', array('width'=>140)), Yii::app()->baseUrl.'/images/webcams/'.$id.'/'.$file, array('class'=>'zoombox zgallery1')). '</td>';
+			        }
+			        if ($i % 4 == 0 && $i != 0) {
+			        	echo '</tr><tr>';
+			        }
+	            }	
                 //*/
+                
+                
                 ?>
             </tr>
         </table>
+<?php 
+}
+else{
+	echo 'Aucune image pour cette webcam';
+}
+?>
+
 
 </div>

@@ -6,6 +6,7 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/homekeeper/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/homekeeper/form.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/zoombox/zoombox.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>

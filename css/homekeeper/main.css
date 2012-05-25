@@ -323,11 +323,22 @@ div#home{
 	float: right;
 }
 
+div.breadcrumbs{
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+div.breadcrumbs a{
+	color: #767676;
+}
+
+div.breadcrumbs a:hover{
+	color: #000000;
+}
+
 div.clear{
 	clear: both;
 }
-
-
 
 
 

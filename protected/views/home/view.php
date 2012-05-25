@@ -1,5 +1,10 @@
 <?php
 
+$this->breadcrumbs=array(
+	'Résidences'=>array('/home'),
+		Home::model()->findByAttributes(array('id'=>$_SESSION['home_id']))->name,
+);
+
 $this->titleSidebar = 'Webcams';
 
 $this->menu=array();

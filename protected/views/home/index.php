@@ -1,4 +1,8 @@
 <?php
+$this->breadcrumbs=array(
+	'Résidences',
+);
+
 $this->titleSidebar = "Opérations";
 $this->menu=array(
 	array('label'=>'- Ajouter une résidences', 'url'=>array('create')),

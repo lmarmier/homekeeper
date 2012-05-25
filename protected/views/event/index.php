@@ -1,5 +1,10 @@
 <?php
 
+$this->breadcrumbs=array(
+	Home::model()->findByAttributes(array('id'=>$_SESSION['home_id']))->name => array('/home/view', 'id'=>$_SESSION['home_id']),
+	'Evénements',
+);
+
 $this->titleSidebar = "Opérations";
 $this->menu=array(
 	array('label'=>'Historique des événements', 'url'=>array('history')),
