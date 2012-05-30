@@ -3,8 +3,8 @@
 class HomeController extends Controller
 {
 	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
+	 * @var string the default layout for the views. Defaults to '//homekeeper/column2', meaning
+	 * using two-column layout. See 'protected/views/homekeeper/column2.php'.
 	 */
 	public $layout='//homekeeper/column2';
 
@@ -27,16 +27,16 @@ class HomeController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array(''),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','index','view'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin', 'lion.mar'),
+				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -49,7 +49,7 @@ class HomeController extends Controller
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	public function actionView($id)
-	{
+	{	
 
 		if ($id != null) {
 			$_SESSION['home_id'] = $id;
@@ -120,6 +120,8 @@ class HomeController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+	 
+	 /*
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -138,12 +140,15 @@ class HomeController extends Controller
 			'model'=>$model,
 		));
 	}
+	//*/
 
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
+	 
+	 /*
 	public function actionDelete($id)
 	{
 		if(Yii::app()->request->isPostRequest)
@@ -158,6 +163,7 @@ class HomeController extends Controller
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
+	//*/
 
 	/**
 	 * Lists all models.
@@ -180,6 +186,7 @@ class HomeController extends Controller
 	/**
 	 * Manages all models.
 	 */
+	 /*
 	public function actionAdmin()
 	{
 		$model=new Home('search');
@@ -191,6 +198,7 @@ class HomeController extends Controller
 			'model'=>$model,
 		));
 	}
+	//*/
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

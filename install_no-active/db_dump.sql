@@ -1,31 +1,23 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
-
+CREATE SCHEMA IF NOT EXISTS `homekeeper` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `homekeeper` ;
 
 -- -----------------------------------------------------
--- Table `user`
+-- Table `homekeeper`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
-
-CREATE  TABLE IF NOT EXISTS `user` (
+CREATE  TABLE IF NOT EXISTS `homekeeper`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `firstName` VARCHAR(45) NULL ,
   `lastName` VARCHAR(45) NULL ,
   `username` VARCHAR(45) NULL ,
   `password` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `home`
+-- Table `homekeeper`.`home`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `home` ;
-
-CREATE  TABLE IF NOT EXISTS `home` (
+CREATE  TABLE IF NOT EXISTS `homekeeper`.`home` (
   `id` BIGINT NOT NULL ,
   `name` VARCHAR(45) NULL ,
   `description` VARCHAR(45) NULL ,
@@ -34,20 +26,16 @@ CREATE  TABLE IF NOT EXISTS `home` (
   INDEX `fk_home_user` (`user_id` ASC) ,
   CONSTRAINT `fk_home_user`
     FOREIGN KEY (`user_id` )
-    REFERENCES `user` (`id` )
+    REFERENCES `homekeeper`.`user` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `event`
+-- Table `homekeeper`.`event`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `event` ;
-
-CREATE  TABLE IF NOT EXISTS `event` (
+CREATE  TABLE IF NOT EXISTS `homekeeper`.`event` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `type` VARCHAR(45) NULL ,
   `value` VARCHAR(45) NULL ,
@@ -60,32 +48,28 @@ CREATE  TABLE IF NOT EXISTS `event` (
   INDEX `fk_event_home1` (`home_id` ASC) ,
   CONSTRAINT `fk_event_home1`
     FOREIGN KEY (`home_id` )
-    REFERENCES `home` (`id` )
+    REFERENCES `homekeeper`.`home` (`id` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `webcam`
+-- Table `homekeeper`.`webcam`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `webcam` ;
-
-CREATE  TABLE IF NOT EXISTS `webcam` (
+CREATE  TABLE IF NOT EXISTS `homekeeper`.`webcam` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `title` VARCHAR(45) NULL ,
   `location` VARCHAR(45) NULL ,
   `updated` DATETIME NULL ,
+  `ip` VARCHAR(45) NULL ,
+  `brand` VARCHAR(45) NULL ,
   `home_id` BIGINT NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_webcam_home1` (`home_id` ASC) ,
   CONSTRAINT `fk_webcam_home1`
     FOREIGN KEY (`home_id` )
-    REFERENCES `home` (`id` )
+    REFERENCES `homekeeper`.`home` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
+ENGINE = InnoDB;

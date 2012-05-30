@@ -2,6 +2,10 @@
 
 class SiteController extends Controller
 {
+	/**
+	 * @var string the default layout for the views. Defaults to '//homekeeper/column2', meaning
+	 * using two-column layout. See 'protected/views/homekeeper/column2.php'.
+	 */
 	public $layout='//homekeeper/column1';
 
 	/**
@@ -60,6 +64,7 @@ class SiteController extends Controller
 	/**
 	 * Displays the contact page
 	 */
+	 /*
 	public function actionContact()
 	{
 		$model=new ContactForm;
@@ -76,6 +81,8 @@ class SiteController extends Controller
 		}
 		$this->render('contact',array('model'=>$model));
 	}
+	//*/
+
 
 	/**
 	 * Displays the login page

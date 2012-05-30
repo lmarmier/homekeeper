@@ -3,8 +3,8 @@
 class EventController extends Controller
 {
 	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
+	 * @var string the default layout for the views. Defaults to '//homekeeper/column2', meaning
+	 * using two-column layout. See 'protected/views/homekeeper/column2.php'.
 	 */
 	public $layout='//homekeeper/column2';
 
@@ -27,16 +27,16 @@ class EventController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','createWithXML'),
+				'actions'=>array('createWithXML'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','list','history','check'),
+				'actions'=>array('index','view','list','history','check'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('lion.mar'),
+				'actions'=>array('admin','delete'.'create','update'),
+				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -72,6 +72,8 @@ class EventController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
+	 
+	 /*
 	public function actionCreate()
 	{
 		$model=new Event;
@@ -90,12 +92,15 @@ class EventController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+	//*/
 
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+	 /*
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -114,12 +119,14 @@ class EventController extends Controller
 			'model'=>$model,
 		));
 	}
+	//*/
 
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
+	 /*
 	public function actionDelete($id)
 	{
 		if(Yii::app()->request->isPostRequest)
@@ -134,6 +141,7 @@ class EventController extends Controller
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
+	//*/
 
 	
 	/**
@@ -161,7 +169,7 @@ class EventController extends Controller
 					),
 			));
 
-		//Récupération du nom de la maisons
+		//Get the home name
 		$model = new Home;
 		$home_name = $model->findByAttributes(array('id'=>$_SESSION['home_id']))->name;
 
@@ -204,7 +212,7 @@ class EventController extends Controller
 				),
 			));
 
-		//Récupération du nom de la maisons
+		//Get the home name
 		$model = new Home;
 		$home_name = $model->findByAttributes(array('id'=>$_SESSION['home_id']))->name;
 
@@ -253,10 +261,17 @@ class EventController extends Controller
 			$this->redirect(array('/'));
 		}
 	}
+	
+	
+	/**-------------------------------------------*
+	 *											  *
+	 *				  WEBSERVICE				  *
+	 *											  *
+	 *--------------------------------------------*/
 
 	/**
 	 * Create a event with the xml in the post variable
-	 * this action must replace the actionCreate in the future
+	 * This action replace the actionCreate but the name is not the same to make a difference with standard actionCreate
 	 *
 	 * @param the xml file to save in database
 	 */
@@ -277,7 +292,7 @@ class EventController extends Controller
 		}
 
 	 	/*
-	 	 * XML Syntax has send
+	 	 * XML Syntax
 	 	 *
 	 	$xml = "<?xml version='1.0' encoding='utf-8'?>
 	 			<!DOCTYPE hkp_request SYSTEM 'protected/data/hkp_request.dtd'>
@@ -312,8 +327,8 @@ class EventController extends Controller
 					'code'=>100, //Code 100 : XML file is not load
 			));
 		}
-		//save the last document received
-		$document->save('test.xml');
+		//save the last document received for test
+		//$document->save('test.xml');
 
 		//Load the model
 		$model = new Event;
@@ -328,6 +343,8 @@ class EventController extends Controller
 		$model->gravity = $info->getAttribute('gravity');
 		$model->comment = $info->getAttribute('comment');
 		$model->datetime = $info->getAttribute('datetime');
+		
+		//Initialize history to 0
 		$model->history = 0;
 
 		//Validate data received

@@ -9,7 +9,7 @@ class Controller extends CController
 	 * @var string the default layout for the controller view. Defaults to '//layouts/column1',
 	 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
 	 */
-	public $layout='//layouts/column1';
+	public $layout='//homekeeper/column1';
 	/**
 	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
 	 */
@@ -30,8 +30,8 @@ class Controller extends CController
 	public $breadcrumbs=array();
 	
 	/**
-	 *
-	 *
+	 * Check if user is authorized to access at this home
+	 * If not access, a httpException is thrown
 	 */
 	 public function beforeAction(){
 		if(isset($_SESSION['home_id'])){
