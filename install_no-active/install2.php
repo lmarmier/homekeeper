@@ -52,7 +52,7 @@
                         }else{
                             if ($_POST['admin_password'] === $_POST['admin_password_repeat']) {
                               $password = $_POST['admin_password'];
-                              mysql_query('INSERT INTO  `test_install`.`user` (`id` ,`firstName` ,`lastName` ,`username` ,`password`)
+                              mysql_query('INSERT INTO  `user` (`id` ,`firstName` ,`lastName` ,`username` ,`password`)
                                            VALUES (NULL ,  "'. $_POST['admin_firstname']. '",  "'. $_POST['admin_lastname']. '",  "admin",  "'. md5($password). '");');
                               $completed = true;
                             }else{
@@ -104,7 +104,7 @@
 		<p>
 			L'installation de votre base de données s'est déroulée avec succès. Par mesure de sécurité, veuillez supprimer le dossier d'installation.<br />
       Une fois ceci fais, vous pouvez accéder à l'application et vous connecter grâce au nom d'utilisateur admin et au mots de passe que vous venez de définir.<br />
-      Vous pouvez également créer de nouvel utilisateurs qui grâce à l'interface de gestion des utilisateurs.
+      Vous pouvez également créer un nouvel utilisateurs grâce à l'interface de gestion des utilisateurs.
 			<a href="..">Accéder à l'application</a>
 		</p>
 	<?php endif; ?>
@@ -142,7 +142,7 @@
         $restore_query = fread($fd, filesize($sql_file));
          fclose($fd);
       } else {
-          $db_error = 'SQL file does not exist: ' . $sql_file;
+          $db_error = 'Fichier SQL non trouvé : ' . $sql_file;
           return false;
       }
 		

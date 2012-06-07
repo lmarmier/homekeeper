@@ -1,7 +1,7 @@
 <?php
 
 $this->titleSidebar = "Mes résidences";
-$this->contentSidebar = "Voici la liste de vos résidence, en cliquant dessus, vous accéderez à la liste de leurs événements respectifs. Vous aurez également accès aux webcams et à l’historique des ces résidences.";
+$this->contentSidebar = "Voici la liste de vos résidences, en cliquant dessus, vous accéderez à la liste de leurs événements respectifs. Vous aurez également accès aux webcams et à l’historique des ces résidences.";
 
 $this->menu = array();
 foreach ($homes as $v) {

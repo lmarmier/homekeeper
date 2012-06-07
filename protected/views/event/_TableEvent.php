@@ -5,7 +5,6 @@
 
 <?php 
 
-//CVarDumper::dump(Yii::app()->user->returnUrl,10,true);
 $this->widget('zii.widgets.grid.CGridView', array(
 			'id'=>'lastEventGrid',
 			'dataProvider'=>$dataProvider,
@@ -20,16 +19,18 @@ $this->widget('zii.widgets.grid.CGridView', array(
 					'urlExpression'=>'array("/event/view", "id"=>$data->id)',
 				),
 				array(
-					'value'=>'"/"'
+					'value'=>'"/"',
+					'visible'=>(Yii::app()->getController()->getAction()->getId() != 'history'),
 				),
 				array(
 					'class'=>'CLinkColumn',
 					'label'=>'Archiver',
 					'urlExpression'=>'array("/event/check", "id"=>$data->id)',
+					'visible'=>(Yii::app()->getController()->getAction()->getId() != 'history'),
 				),
 			),
 			'rowCssClassExpression'=>'$data->gravity',
-			'hideHeader'=>'true',
+			'hideHeader'=>true,
 			'selectableRows'=>'0',
 			'emptyText'=>'Auncun événement...',
 			'htmlOptions'=>array(),
@@ -42,7 +43,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
 <hr/>
 	<div class="legend">
-		<div class="legendItem"><span class="green">&nbsp;</span>Bas ou moyens</div><div class="legendItem"><span class="orange">&nbsp;</span>Haut ou critique</div><div class="legendItem"><span class="red">&nbsp;</span>Sévère</div>
+		<div class="legendItem"><span class="green">&nbsp;</span>Bas ou moyens</div><div class="legendItem"><span class="orange">&nbsp;</span>Haut</div><div class="legendItem"><span class="red">&nbsp;</span>Sévère ou critique</div>
 	</div>
 
 </div>

@@ -1,5 +1,5 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Error';
+$this->pageTitle=Yii::app()->name . ' - Erreur';
 ?>
 
 <h2>Error <?php echo $code; ?></h2>

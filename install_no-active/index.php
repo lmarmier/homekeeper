@@ -23,13 +23,22 @@
 	</div><!-- mainmenu -->
 	<div class="install">
 		<p>
-			Bienvenue sur l'application de surveillance de résience HomeKeeper. Cet assistant va vous conduire dans les configuration de base nécessaire à l'utilisation de cet outils. A la fin de cet assistant, vous aurez réalisé : <br />
+			Bienvenue sur l'application de surveillance de résience HomeKeeper. Cet assistant va vous conduire dans les configuration de base nécessaire à l'utilisation de cet outil. A la fin de cet assistant, vous aurez réalisé : <br />
 			<ul>
 				<li>Configuration de la base de données</li>
 				<li>Création de votre mots de passe pour l'administration des utilisateurs</li>
-				<li>Configuration de votre première résidence</li>
 			</ul>
-			Afin de préparer au mieux cette installation, veuillez créer une base de données vide sur votre serveur. Une fois ceci fais, cliquez sur suivant.<br />
+			Afin de préparer au mieux cette installation, veuillez créer une base de données vide sur votre serveur.<br />
+			Veuillez également vérifier que ces dossiers sont bien inscriptible:<br />
+			<ul>
+				<li>protected</li>
+				<li>assets</li>
+				<li>config</li>
+				<li>runtime</li>
+				<li>images et ses sous-dossier</li>
+			</ul>
+			<br />
+			Une fois que vous êtes prêt, vous pouvez démarrer l'installation.
 			<a href="install.php">Démarrer l'installation</a>
 		</p>
 	</div>

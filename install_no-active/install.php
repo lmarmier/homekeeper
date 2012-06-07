@@ -11,6 +11,19 @@
 <head>
 	<title>Assistant d'installation</title>
 	<link rel="stylesheet" href="../css/homekeeper/main.css">
+	<style type="text/css">
+		label{
+			display: block;
+			width: 215px;
+			float: left;
+		}
+		input.buttons{
+			background: none;
+			border: none;
+			font-size: 11pt;
+			margin-top: -3px;
+		}
+	</style>
 </head>
 <body>
 	<div class="container" id="page">
@@ -23,7 +36,7 @@
 	</div><!-- mainmenu -->
 	<div class="install">
 		<p>
-			La première étapes d'installation consiste à configurer votre base de données. Veuillez remplir correctement le formulaire ci-dessous et cliquez sur suivant.<br />
+			Ici vous pouvez configurer votre base de données et votre utilisateur "admin". Veuillez remplir correctement le formulaire ci-dessous et cliquez sur suivant.<br />
 			<div class="form">
 				<form action="install2.php" method="post">
 					<fieldset>
@@ -39,10 +52,10 @@
 						<legend>Information de l'utilisateur "Admin"</legend>
 						<label>Prénom :</label><input type="text" name="admin_firstname"><br />
 						<label>Nom :</label><input type="text" name="admin_lastname"><br />
-						<label>Mots de passe :</label><input type="text" name="admin_password"><br />
-						<label>Retapez votre mots de passe :</label><input type="text" name="admin_password_repeat"><br />
+						<label>Mots de passe :</label><input type="password" name="admin_password"><br />
+						<label>Retapez votre mots de passe :</label><input type="password" name="admin_password_repeat"><br />
 					</fieldset>
-					<input type="submit" value="Suivant..." class="buttons">
+					<a><input type="submit" value="Suivant..." class="buttons"></a>
 				</form>
 			</div>
 		</p>

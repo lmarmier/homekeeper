@@ -51,11 +51,11 @@ class EventController extends Controller
 	public function actionView($id)
 	{	
 
-		//Nous mettons l'événement dans l'historique
+		//Put the event in history
 		$event = $this->loadModel($id);
 		$event->history = 1;
 
-		//Si l'utilisateur à modifier un commentaire
+		//if the user edit a comment
 		//CVarDumper::dump($_POST,10,true);
 		if (isset($_POST['Event'])) {
 			$event->comment = $_POST['Event']['comment'];
@@ -155,7 +155,7 @@ class EventController extends Controller
 
 		//If nothing home is selected we redirect on the homes list
 		if (!isset($_SESSION['home_id'])) {
-			Yii::app()->user->setFlash('noHome', 'Vous devez au préalable séléctionner une résidence afin de consulter ses événements');
+			Yii::app()->user->setFlash('noHome', 'Vous devez au préalable sélectionner une résidence afin de consulter ses événements');
 			$this->redirect(array('/home'));
 		}
 
@@ -246,7 +246,7 @@ class EventController extends Controller
 	{
 		$model=Event::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'La page demandée n\'existe pas');
 		return $model;
 	}
 

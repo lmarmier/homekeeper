@@ -2,7 +2,7 @@
 $date = new CDateFormatter('fr');
 
 $this->breadcrumbs=array(
-	Home::model()->findByAttributes(array('id'=>$_SESSION['home_id']))->name => array('/home/view', 'id'=>$_SESSION['home_id']),
+	Home::model()->findByAttributes(array('id'=>$model->home_id))->name => array('/home/view', 'id'=>$model->home_id),
 	'Evenement'=>array('/event'),
 	'Evenement du '.$date->formatDateTime($model->datetime, 'short', null). ' à '.  $date->formatDateTime($model->datetime, null, 'short'),
 );

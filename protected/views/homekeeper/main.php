@@ -25,7 +25,7 @@
 				array('label'=>'Page d\'authentification', 'visible'=>(Yii::app()->getController()->getAction()->getId() == 'index' && Yii::app()->getController()->getId() == 'site'), 'itemOptions'=>array('class'=>'auth')),
 				array('label'=>'Gestion des utilisateurs', 'visible'=>((Yii::app()->getController()->getAction()->getId() == 'userLogin' && Yii::app()->getController()->getId() == 'site') || isset($_SESSION['admin'])), 'itemOptions'=>array('class'=>'auth')),
 				array('label'=>'Home', 'url'=>array('/'), 'visible'=>(!Yii::app()->user->isGuest && !isset($_SESSION['admin']))),
-				array('label'=>'Résidence', 'url'=>array('/home'), 'visible'=>(!Yii::app()->user->isGuest && !isset($_SESSION['admin']))),
+				array('label'=>'Résidences', 'url'=>array('/home'), 'visible'=>(!Yii::app()->user->isGuest && !isset($_SESSION['admin']))),
 				array('label'=>'Evénements', 'url'=>array('/event'), 'visible'=>(!Yii::app()->user->isGuest && !isset($_SESSION['admin']))),
 				array('label'=>'Webcam', 'url'=>array('/webcam'), 'visible'=>(!Yii::app()->user->isGuest && !isset($_SESSION['admin']))),
 				//array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
@@ -43,7 +43,7 @@
 	<div class="clear"></div>
 
 	<div id="home">
-		Maison séléctionnée : <?php echo (isset($_SESSION['home_id']))?Home::model()->findByAttributes(array('id'=>$_SESSION['home_id']))->name :'Aucune...'; ?>
+		Maison sélectionnée : <?php echo (isset($_SESSION['home_id']))?Home::model()->findByAttributes(array('id'=>$_SESSION['home_id']))->name :'Aucune...'; ?>
 	</div>
 
 	<div id="footer">
