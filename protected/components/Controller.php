@@ -33,7 +33,7 @@ class Controller extends CController
 	 * Check if user is authorized to access at this home
 	 * If not access, a httpException is thrown
 	 */
-	 public function beforeAction(){
+	 public function beforeAction($action){
 		if(isset($_SESSION['home_id'])){
 			$homeUserId = Home::model()->findByPk($_SESSION['home_id'])->user_id;
 			$id = User::model()->findByAttributes(array('username'=>Yii::app()->user->id))->id;
